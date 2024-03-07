@@ -1,4 +1,4 @@
 streamlit
-langchain==0.0.267
+langchain
 langchain-groq
 python-dotenv

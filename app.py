@@ -1,3 +1,6 @@
+# python -m venv venv
+# venv\Scripts\activate
+
 import streamlit as st
 import os
 from groq import Groq
@@ -22,14 +25,14 @@ def main():
     st.sidebar.title('Select an LLM')
     model = st.sidebar.selectbox(
         'Choose a model',
-        ['mixtral-8x7b-32768', 'llama2-70b-4096']
+        ['llama2-70b-4096','mixtral-8x7b-32768' ]
     )
     conversational_memory_length = st.sidebar.slider('Conversational memory length:', 1, 10, value = 5)
 
     memory=ConversationBufferWindowMemory(k=conversational_memory_length)
 
-    user_question = st.text_area("Ask a question:")
-
+    # user_question = st.text_area("Ask a question:")
+    user_question = st.chat_input("Ask a question:")
     # session state variable
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history=[]
